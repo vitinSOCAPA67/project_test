@@ -98,3 +98,105 @@ def alterar_estado():
 mostrar_setores()
 alterar_estado()
 mostrar_setores()
+
+def cadastrar_funcionario():
+
+    nome = input("Nome do funcionario: ")
+
+    if nome == "":
+        print("Nome invalido!")
+        return
+
+    senha = input("Senha: ")
+
+    if senha == "":
+        print("Senha invalida!")
+        return
+
+    cargo = input("Cargo: ")
+
+    if cargo == "":
+        print("Cargo invalido!")
+        return
+
+    funcionarios[nome] = {
+        "senha": senha,
+        "cargo": cargo
+    }
+
+    print("Funcionario cadastrado com sucesso!")
+
+def listar_funcionarios():
+
+    print("\nFUNCIONARIOS CADASTRADOS")
+
+    for nome in funcionarios:
+
+        print("Nome:", nome)
+        print("Cargo:", funcionarios[nome]["cargo"])
+        print("-" * 20)
+
+def realizar_login():
+
+    usuario = input("Usuario: ")
+    senha = input("Senha: ")
+
+    if usuario in funcionarios:
+
+        if funcionarios[usuario]["senha"] == senha:
+            print("Acesso permitido!")
+            print("Cargo:", funcionarios[usuario]["cargo"])
+
+        else:
+            print("Senha incorreta!")
+
+    else:
+        print("Usuario nao encontrado!")
+
+# MENU PRINCIPAL
+
+while True:
+
+    print("\n====== CONTROLE DE ACESSO ======")
+    print("1 - Cadastrar funcionario")
+    print("2 - Listar funcionarios")
+    print("3 - Visualizar portas")
+    print("4 - Ocupar porta")
+    print("5 - Liberar porta")
+    print("6 - Realizar login")
+    print("7 - Listar recursos")
+    print("8 - Dados da empresa")
+    print("9 - Sair")
+
+    opcao = input("Escolha uma opcao: ")
+
+    if opcao == "1":
+        cadastrar_funcionario()
+
+    elif opcao == "2":
+        listar_funcionarios()
+
+    elif opcao == "3":
+        visualizar_portas()
+
+    elif opcao == "4":
+        ocupar_porta()
+
+    elif opcao == "5":
+        liberar_porta()
+
+    elif opcao == "6":
+        realizar_login()
+
+    elif opcao == "7":
+        listar_recursos()
+
+    elif opcao == "8":
+        mostrar_empresa()
+
+    elif opcao == "9":
+        print("Sistema encerrado.")
+        break
+
+    else:
+        print("Opcao invalida!")
