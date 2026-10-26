@@ -1,11 +1,45 @@
+# Leitura sequencial do arquivo CSV
+funcionarios_processados = []
+custo_total = 0.0
+
+with open("dados.csv", "r", encoding="utf-8") as arquivo:
+    cabecalho = arquivo.readline()
+    print(cabecalho, end="")
+
+    while True:
+        linha = arquivo.readline()
+        if linha == "":
+            break
+
+        dados_funcionario = linha.strip().split(",")
+        nome_funcionario = dados_funcionario[0]
+        custo = float(dados_funcionario[1])
+        funcionarios_processados.append(nome_funcionario)
+        custo_total += custo
+        print(linha, end="")
+
+matriz_acesso = [
+    ["Livre", "Livre", "Livre"],
+    ["Livre", "Livre", "Livre"],
+    ["Livre", "Livre", "Livre"]
+]
+
 # DADOS DA EMPRESA
 
 empresa = {
-    "nome": "SecureTech",
+    "nome": "SegureTech",
     "cnpj": "12.345.678/0001-99",
     "cidade": "São Paulo",
     "ramo": "Segurança Digital"
 }
+
+print("\n====== PAINEL ======")
+print("Nome da empresa:", empresa["nome"])
+print("Quantidade de funcionarios processados:", len(funcionarios_processados))
+print("Estado da matriz de acesso:")
+for linha_matriz in matriz_acesso:
+    print("  ".join(linha_matriz))
+print(f"Soma total dos custos: {custo_total:.3f}")
 
 # FUNCIONÁRIOS
 
@@ -177,12 +211,21 @@ while True:
         listar_funcionarios()
 
     elif opcao == "3":
+        def visualizar_portas():
+            ...
+
         visualizar_portas()
 
     elif opcao == "4":
+        def ocupar_porta():
+            ...
+
         ocupar_porta()
 
     elif opcao == "5":
+        def liberar_porta():
+            ...
+
         liberar_porta()
 
     elif opcao == "6":
